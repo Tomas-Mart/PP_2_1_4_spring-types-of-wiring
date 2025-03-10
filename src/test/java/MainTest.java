@@ -17,16 +17,16 @@ public class MainTest {
 
     @Test
     public void mainTest() {
-        String text = "На свете есть океан , на океане остров , на острове дерево , на дереве заяц , в зайце утка , в утке яйцо , в яйце иголка , смерть Кощея на игле :(";
+        String expectedText = "На свете есть океан, в океане остров, на острове дерево, на дереве заяц, в зайце утка, в утке яйцо, в яйце иголка, смерть Кощея на игле -> :( смерть ☠️.";
 
         KoscheiTheDeathless koscheiTheDeathless =
                 applicationContext.getBean(KoscheiTheDeathless.class);
-        System.out.println(koscheiTheDeathless.getRulesByDeth());
-        String testText = koscheiTheDeathless.getRulesByDeth();
+        String actualText = koscheiTheDeathless.getRulesByDeth();
 
-        if (!testText.contains(text) && testText.length() <= text.length()) {
+        System.out.print(actualText);
+
+        if (!expectedText.equals(actualText)) {
             Assert.fail("Тест провален, не корректная связь бинов. Итоговая фраза не верна.");
         }
     }
-
 }
